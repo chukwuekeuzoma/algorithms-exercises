@@ -23,7 +23,7 @@ function find(needle, numbers) {
     if (numbers[i] === needle) {
       return console.log("found it at index", i);
     } else {
-      console.log('this is not in the array')
+      console.log("this is not in the array");
     }
   }
 }
@@ -57,3 +57,22 @@ function FindnonReapt(inputString) {
 const input = "aabbcddeffg";
 const result = FindnonReapt(input);
 console.log(result);
+
+// to get all the reapting element
+
+function FindNoRepeat(input) {
+  let chartCount = {};
+
+  for (let char of input) {
+    chartCount[char] = (chartCount[char] || 0) + 1;
+  }
+
+  let allNoRepeat = [];
+  for (let char of input) {
+    if (chartCount[char] === 1) {
+      allNoRepeat.push(char);
+    }
+  }
+
+  return allNoRepeat;
+}
