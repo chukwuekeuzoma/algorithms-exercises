@@ -76,3 +76,33 @@ function FindNoRepeat(input) {
 
   return allNoRepeat;
 }
+
+// Function to list all non-repeating characters in a string or array
+function listNonRepeatingChars(input) {
+  // Convert to array if it's a string
+  const arr = typeof input === 'string' ? input.split('') : input;
+
+  const charCount = {};
+
+  // Count each character
+  for (let char of arr) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  // Collect characters that appear only once
+  const result = [];
+  for (let char of arr) {
+    if (charCount[char] === 1) {
+      result.push(char);
+    }
+  }
+
+  return result;
+}
+
+// Example usage:
+const input1 = "aabbcddeffg";      // string input
+const input2 = ['a', 'b', 'c', 'a', 'd', 'e', 'b'];  // array input
+
+console.log(listNonRepeatingChars(input1)); // Output: ['c', 'g']
+console.log(listNonRepeatingChars(input2)); // Output: ['c', 'd', 'e']
