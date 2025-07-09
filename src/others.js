@@ -34,7 +34,7 @@ console.log(find(needle, numbers));
 
 // To find repeated items on a string
 
-function FindnonReapt(inputString) {
+function findNonReapt(inputString) {
   let chartCount = {};
 
   for (let char of inputString) {
@@ -55,12 +55,12 @@ function FindnonReapt(inputString) {
 }
 
 const input = "aabbcddeffg";
-const result = FindnonReapt(input);
+const result = findNonReapt(input);
 console.log(result);
 
 // to get all the reapting element
 
-function FindNoRepeat(input) {
+function findNoRepeat(input) {
   let chartCount = {};
 
   for (let char of input) {
@@ -106,3 +106,55 @@ const input2 = ['a', 'b', 'c', 'a', 'd', 'e', 'b'];  // array input
 
 console.log(listNonRepeatingChars(input1)); // Output: ['c', 'g']
 console.log(listNonRepeatingChars(input2)); // Output: ['c', 'd', 'e']
+
+//finding the maximum number in an subarray
+function maxSubArray(nums) {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+
+  return maxSum;
+}
+
+function maxSubArray(nums) {
+  let currentSum = nums[0];
+  let maxSum = nums[0];
+
+  let start = 0;       // Final subarray start
+  let end = 0;         // Final subarray end
+  let tempStart = 0;   // Where a new subarray might start
+
+  for (let i = 1; i < nums.length; i++) {
+    // Decide whether to start fresh or continue
+    if (nums[i] > currentSum + nums[i]) {
+      currentSum = nums[i];
+      tempStart = i; // Start new subarray
+    } else {
+      currentSum += nums[i];
+    }
+
+    // If we found a new max, store its range
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
+      start = tempStart;
+      end = i;
+    }
+  }
+
+  const subarray = nums.slice(start, end + 1);
+  return {
+    maxSum,
+    subarray,
+  };
+}
+
+// Example usage
+const resultCheck = maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+console.log("Max Sum:", resultCheck.maxSum);      // 6
+console.log("Subarray:", resultCheck.subarray);   // [4, -1, 2, 1]
+
+
