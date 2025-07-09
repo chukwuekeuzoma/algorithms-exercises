@@ -80,7 +80,7 @@ function findNoRepeat(input) {
 // Function to list all non-repeating characters in a string or array
 function listNonRepeatingChars(input) {
   // Convert to array if it's a string
-  const arr = typeof input === 'string' ? input.split('') : input;
+  const arr = typeof input === "string" ? input.split("") : input;
 
   const charCount = {};
 
@@ -101,8 +101,8 @@ function listNonRepeatingChars(input) {
 }
 
 // Example usage:
-const input1 = "aabbcddeffg";      // string input
-const input2 = ['a', 'b', 'c', 'a', 'd', 'e', 'b'];  // array input
+const input1 = "aabbcddeffg"; // string input
+const input2 = ["a", "b", "c", "a", "d", "e", "b"]; // array input
 
 console.log(listNonRepeatingChars(input1)); // Output: ['c', 'g']
 console.log(listNonRepeatingChars(input2)); // Output: ['c', 'd', 'e']
@@ -124,9 +124,9 @@ function maxSubArray(nums) {
   let currentSum = nums[0];
   let maxSum = nums[0];
 
-  let start = 0;       // Final subarray start
-  let end = 0;         // Final subarray end
-  let tempStart = 0;   // Where a new subarray might start
+  let start = 0; // Final subarray start
+  let end = 0; // Final subarray end
+  let tempStart = 0; // Where a new subarray might start
 
   for (let i = 1; i < nums.length; i++) {
     // Decide whether to start fresh or continue
@@ -154,7 +154,31 @@ function maxSubArray(nums) {
 
 // Example usage
 const resultCheck = maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
-console.log("Max Sum:", resultCheck.maxSum);      // 6
-console.log("Subarray:", resultCheck.subarray);   // [4, -1, 2, 1]
+console.log("Max Sum:", resultCheck.maxSum); // 6
+console.log("Subarray:", resultCheck.subarray); // [4, -1, 2, 1]
 
+// given a string S, return the 'reverse' string where all characters that are not letters stay in the same place and all letters reverse there positions
 
+// example
+// input "a-bC-dEf=ghIj!!"
+// output "j-Ih-gfE=dCba!!"
+
+function reversedArray(s) {
+  let lettersToArray = s.split("");
+  let fliteredonlyLetters = lettersToArray.filter((l) => /[a-zA-Z]/.test(l));
+  let reversedLettersArray = fliteredonlyLetters.reverse();
+
+  let letterIndex = 0;
+  for (let i = 0; i < lettersToArray.length; i++) {
+    if (/[a-zA-Z]/.test(lettersToArray[i])) {
+      lettersToArray[i] = reversedLettersArray[letterIndex];
+      letterIndex++;
+    }
+  }
+
+  return lettersToArray.join("");
+}
+
+let inputReverse = "a-bC-dEf=ghIj!!";
+let resultReverse = reversedArray(input);
+console.log(result);
