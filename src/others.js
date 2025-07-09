@@ -206,3 +206,14 @@ const length = removeDuplicates(arr);
 console.log(length);         // Output: 4
 console.log(arr.slice(0, length)); // Output: [1, 2, 3, 4]
 
+// Rotate an array to the right by k steps
+
+function rotateRight(arr, k) {
+  k = k % arr.length;
+  return arr.slice(-k).concat(arr.slice(0, -k));
+}
+
+// Example
+console.log(rotateRight([1, 2, 3, 4, 5], 2)); // [4, 5, 1, 2, 3]
+
+
