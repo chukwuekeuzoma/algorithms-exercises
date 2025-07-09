@@ -182,3 +182,27 @@ function reversedArray(s) {
 let inputReverse = "a-bC-dEf=ghIj!!";
 let resultReverse = reversedArray(input);
 console.log(result);
+
+// remove duplicates from a sorted array in place and return the new length of the array
+function removeDuplicates(nums) {
+  if (nums.length === 0) return 0;
+
+  let i = 0;
+
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[j] !== nums[i]) {
+      i++;
+      nums[i] = nums[j];
+    }
+  }
+
+  return i + 1; // Length of the array without duplicates
+}
+
+// Example:
+const arr = [1, 1, 2, 2, 3, 4, 4];
+const length = removeDuplicates(arr);
+
+console.log(length);         // Output: 4
+console.log(arr.slice(0, length)); // Output: [1, 2, 3, 4]
+
